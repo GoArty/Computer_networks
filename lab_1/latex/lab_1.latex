@@ -1,0 +1,452 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\UseRawInputEncoding
+
+% Поля
+%--------------------------------------
+\usepackage{geometry}
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1cm}
+%--------------------------------------
+
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, main=russian]{babel}
+%--------------------------------------
+
+\usepackage{textcomp}
+
+% Красная строка
+%--------------------------------------
+\usepackage{indentfirst}               
+%--------------------------------------             
+
+
+%Graphics
+%--------------------------------------
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+%--------------------------------------
+
+% Полуторный интервал
+%--------------------------------------
+\linespread{1.3}                    
+%--------------------------------------
+
+%Выравнивание и переносы
+%--------------------------------------
+% Избавляемся от переполнений
+\sloppy
+% Запрещаем разрыв страницы после первой строки абзаца
+\clubpenalty=10000
+% Запрещаем разрыв страницы после последней строки абзаца
+\widowpenalty=10000
+%--------------------------------------
+
+%Списки
+\usepackage{enumitem}
+
+%Подписи
+\usepackage{caption} 
+
+%Гиперссылки
+\usepackage{hyperref}
+
+\hypersetup {
+	unicode=true
+}
+
+%Рисунки
+%--------------------------------------
+\DeclareCaptionLabelSeparator*{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+%--------------------------------------
+
+\usepackage{tempora}
+
+%Листинги
+%--------------------------------------
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize, 
+  %basicstyle=\footnotesize\AnkaCoder,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks shoulbd only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  inputencoding=utf8,
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bf,       % keyword style
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,                       % sets default tabsize to 8 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%--------------------------------------
+
+%%% Математические пакеты %%%
+%--------------------------------------
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}  % Математические дополнения от AMS
+\usepackage{mathtools}                              % Добавляет окружение multlined
+\usepackage[perpage]{footmisc}
+%--------------------------------------
+
+%--------------------------------------
+%			НАЧАЛО ДОКУМЕНТА
+%--------------------------------------
+
+\begin{document}
+
+%--------------------------------------
+%			ТИТУЛЬНЫЙ ЛИСТ
+%--------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\newpage
+
+
+%Шапка титульного листа
+%--------------------------------------
+\vspace*{-60pt}
+\hspace{-65pt}
+\begin{minipage}{0.3\textwidth}
+\hspace*{-20pt}\centering
+\includegraphics[width=\textwidth]{emblem}
+\end{minipage}
+\begin{minipage}{0.67\textwidth}\small \textbf{
+\vspace*{-0.7ex}
+\hspace*{-6pt}\centerline{Министерство науки и высшего образования Российской Федерации}
+\vspace*{-0.7ex}
+\centerline{Федеральное государственное бюджетное образовательное учреждение }
+\vspace*{-0.7ex}
+\centerline{высшего образования}
+\vspace*{-0.7ex}
+\centerline{<<Московский государственный технический университет}
+\vspace*{-0.7ex}
+\centerline{имени Н.Э. Баумана}
+\vspace*{-0.7ex}
+\centerline{(национальный исследовательский университет)>>}
+\vspace*{-0.7ex}
+\centerline{(МГТУ им. Н.Э. Баумана)}}
+\end{minipage}
+%--------------------------------------
+
+%Полосы
+%--------------------------------------
+\vspace{-25pt}
+\hspace{-35pt}\rule{\textwidth}{2.3pt}
+
+\vspace*{-20.3pt}
+\hspace{-35pt}\rule{\textwidth}{0.4pt}
+%--------------------------------------
+
+\vspace{1.5ex}
+\hspace{-35pt} \noindent \small ФАКУЛЬТЕТ\hspace{80pt} <<Информатика и системы управления>>
+
+\vspace*{-16pt}
+\hspace{47pt}\rule{0.83\textwidth}{0.4pt}
+
+\vspace{0.5ex}
+\hspace{-35pt} \noindent \small КАФЕДРА\hspace{50pt} <<Теоретическая информатика и компьютерные технологии>>
+
+\vspace*{-16pt}
+\hspace{30pt}\rule{0.866\textwidth}{0.4pt}
+  
+\vspace{11em}
+
+\begin{center}
+\Large {\bf Лабораторная работа № 1} \\ 
+\large {\bf по курсу <<Компьютерные сети>>} \\
+\large <<Простейший протокол прикладного уровня>> 
+\end{center}\normalsize
+
+\vspace{8em}
+
+
+\begin{flushright}
+  {Студент группы ИУ9-31Б Горбунов А. Д. \hspace*{15pt}\\ 
+  \vspace{2ex}
+  Преподаватель Посевин Д. П.\hspace*{15pt}}
+\end{flushright}
+
+\bigskip
+
+\vfill
+ 
+
+\begin{center}
+\textsl{Москва 2023}
+\end{center}
+\end{titlepage}
+%--------------------------------------
+%		КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+%--------------------------------------
+
+\renewcommand{\ttdefault}{pcr}
+
+\setlength{\tabcolsep}{3pt}
+\newpage
+\setcounter{page}{2}
+
+\section{Задание}\label{Sect::task}
+    Протокол многократного поиска подстрок в строке(вариант 2)
+
+\section{Результаты}\label{Sect::res}
+
+Исходный код программы представлен в листинге~\ref{lst:code1}, ~\ref{lst:code2}, ~\ref{lst:code3}, ~\ref{lst:code4}, ~\ref{lst:code5}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={client.go},label={lst:code1}]
+package main
+import (
+	"encoding/json"
+	"flag"
+	"fmt"
+	"net"
+	"proto"
+	"strconv"
+	"github.com/skorobogatov/input"
+)
+func interact(conn *net.TCPConn) {
+	defer conn.Close()
+	encoder, decoder := json.NewEncoder(conn), json.NewDecoder(conn)
+	var stro proto.Stroca
+
+	for {
+		fmt.Printf("command = ")
+		command := input.Gets()
+		switch command {
+		case "quit":
+			send_request(encoder, "quit", nil)
+			return
+		case "stroca":
+			fmt.Printf("str: ")
+			fmt.Scanf("%s", &(stro.Stroca))
+			send_request(encoder, "stroca", &stro)
+		case "substring":
+			if len(stro.Stroca) == 0 {
+				fmt.Printf("error: stroca is not set\n")
+				continue
+			}
+			var str string
+			fmt.Printf("substring = ")
+			fmt.Scanf("%s", &str)
+			send_request(encoder, "substring", &str)
+		default:
+			fmt.Printf("error: unknown command\n")
+			continue
+		}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={client.go(продолжение)},label={lst:code2}]
+        var resp proto.Response
+		if err := decoder.Decode(&resp); err != nil {
+			fmt.Printf("error: %v\n", err)
+			break
+		}
+		switch resp.Status {
+		case "ok":
+			fmt.Printf("ok\n")
+		case "failed":
+			if resp.Data == nil {
+				fmt.Printf("error: data field is absent in response\n")
+			} else {
+				var errorMsg string
+				if err := json.Unmarshal(*resp.Data, &errorMsg); err != nil {
+					fmt.Printf("error: malformed data field in response\n")
+				} else {
+					fmt.Printf("failed: %s\n", errorMsg)
+				}
+			}
+		case "result":
+			if resp.Data == nil {
+				fmt.Printf("error: data field is absent in response\n")
+			} else {
+				var resultInsex []int
+				var indexString string
+				if err := json.Unmarshal(*resp.Data, &resultInsex); err != nil {
+					fmt.Printf("error: malformed data field in response\n")
+				} else {
+					for i, num := range resultInsex {
+						if i > 0 {
+							indexString += ","
+						}
+						indexString += strconv.Itoa(num)
+					}
+					fmt.Printf("result = %s\n", indexString)
+				}
+			}
+		default:
+			fmt.Printf("error: server reports unknown status %q\n", resp.Status)
+		}
+	}
+}
+func send_request(encoder *json.Encoder, command string, data interface{}) {
+	var raw json.RawMessage
+	raw, _ = json.Marshal(data)
+	encoder.Encode(&proto.Request{Command: command, Data: &raw})
+}
+func main() {
+	var addrStr string
+	flag.StringVar(&addrStr, "addr", "127.0.0.1:6000", "specify ip address and port")
+	flag.Parse()
+	if addr, err := net.ResolveTCPAddr("tcp", addrStr); err != nil {
+		fmt.Printf("error: %v\n", err)
+	} else if conn, err := net.DialTCP("tcp", nil, addr); err != nil {
+		fmt.Printf("error: %v\n", err)
+	} else {
+		interact(conn)
+	}
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={proto.go},label={lst:code3}]
+package proto
+import "encoding/json"
+
+type Request struct {
+	Command string `json:"command"`
+	Data *json.RawMessage `json:"data"`
+}
+
+type Response struct {
+	Status string `json:"status"`
+	Data *json.RawMessage `json:"data"`
+}
+
+type Stroca struct {
+	Stroca string `json:"stroca"`
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={server.go},label={lst:code4}]
+package main
+import (
+	"encoding/json"
+	"flag"
+	"fmt"
+	"net"
+	"proto"
+	"strings"
+	log "github.com/mgutz/logxi/v1"
+)
+
+func evaluatePolynomial(str string, substr string) []int {
+	indices := []int{}
+	startIndex := 0
+	for {
+		index := strings.Index(str[startIndex:], substr)
+		if index == -1 {
+			break
+		}
+		indices = append(indices, startIndex+index)
+		startIndex += index + len(substr)
+	}
+
+	return indices
+}
+
+type Client struct {
+	logger log.Logger    
+	conn   *net.TCPConn  
+	enc    *json.Encoder 
+	stro   proto.Stroca
+}
+
+func NewClient(conn *net.TCPConn) *Client {
+	return &Client{
+		logger: log.New(fmt.Sprintf("client %s", conn.RemoteAddr().String())),
+		conn:   conn,
+		enc:    json.NewEncoder(conn),
+		stro:   proto.Stroca{Stroca: ""},
+	}
+}
+
+func (client *Client) serve() {
+	defer client.conn.Close()
+	decoder := json.NewDecoder(client.conn)
+	for {
+		var req proto.Request
+		if err := decoder.Decode(&req); err != nil {
+			client.logger.Error("cannot decode message", "reason", err)
+			break
+		} else {
+			client.logger.Info("received command", "command", req.Command)
+			if client.handleRequest(&req) {
+				client.logger.Info("shutting down connection")
+				break
+			}
+		}
+	}
+}
+
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={server.go(продолжение)},label={lst:code5}]
+func (client *Client) respond(status string, data interface{}) {
+	var raw json.RawMessage
+	raw, _ = json.Marshal(data)
+	client.enc.Encode(&proto.Response{Status: status, Data: &raw})
+}
+
+func main() {
+	var addrStr string
+	flag.StringVar(&addrStr, "addr", "127.0.0.1:6000", "specify ip address and port")
+	flag.Parse()
+	if addr, err := net.ResolveTCPAddr("tcp", addrStr); err != nil {
+		log.Error("address resolution failed", "address", addrStr)
+	} else {
+		log.Info("resolved TCP address", "address", addr.String())
+		if listener, err := net.ListenTCP("tcp", addr); err != nil {
+			log.Error("listening failed", "reason", err)
+		} else {
+			for {
+				if conn, err := listener.AcceptTCP(); err != nil {
+					log.Error("cannot accept connection", "reason", err)
+				} else {
+					log.Info("accepted connection", "address", conn.RemoteAddr().String())
+					go NewClient(conn).serve()
+				}
+			}
+		}
+	}
+}
+\end{lstlisting}
+\end{figure}
+
+
+\begin{figure}[!htb]
+Результат запуска представлен на рисунке ~\ref{fig:picture_1.png}, ~\ref{fig:picture_2.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_1.png}
+\caption{Выполнения протокола при 1-м пользователе}
+\label{fig:picture_1.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_2.png}
+\caption{Выполнения протокола при 2-х пользователях}
+\label{fig:picture_2.png}
+\end{figure}
+
+\end{document}

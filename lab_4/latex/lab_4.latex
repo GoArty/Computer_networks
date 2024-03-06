@@ -1,0 +1,443 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\UseRawInputEncoding
+
+% Поля
+%--------------------------------------
+\usepackage{geometry}
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1cm}
+%--------------------------------------
+
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, main=russian]{babel}
+%--------------------------------------
+
+\usepackage{textcomp}
+
+% Красная строка
+%--------------------------------------
+\usepackage{indentfirst}               
+%--------------------------------------             
+
+
+%Graphics
+%--------------------------------------
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+%--------------------------------------
+
+% Полуторный интервал
+%--------------------------------------
+\linespread{1.3}                    
+%--------------------------------------
+
+%Выравнивание и переносы
+%--------------------------------------
+% Избавляемся от переполнений
+\sloppy
+% Запрещаем разрыв страницы после первой строки абзаца
+\clubpenalty=10000
+% Запрещаем разрыв страницы после последней строки абзаца
+\widowpenalty=10000
+%--------------------------------------
+
+%Списки
+\usepackage{enumitem}
+
+%Подписи
+\usepackage{caption} 
+
+%Гиперссылки
+\usepackage{hyperref}
+
+\hypersetup {
+	unicode=true
+}
+
+%Рисунки
+%--------------------------------------
+\DeclareCaptionLabelSeparator*{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+%--------------------------------------
+
+\usepackage{tempora}
+
+%Листинги
+%--------------------------------------
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize, 
+  %basicstyle=\footnotesize\AnkaCoder,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks shoulbd only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  inputencoding=utf8,
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bf,       % keyword style
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,                       % sets default tabsize to 8 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%--------------------------------------
+
+%%% Математические пакеты %%%
+%--------------------------------------
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}  % Математические дополнения от AMS
+\usepackage{mathtools}                              % Добавляет окружение multlined
+\usepackage[perpage]{footmisc}
+%--------------------------------------
+
+%--------------------------------------
+%			НАЧАЛО ДОКУМЕНТА
+%--------------------------------------
+
+\begin{document}
+
+%--------------------------------------
+%			ТИТУЛЬНЫЙ ЛИСТ
+%--------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\newpage
+
+
+%Шапка титульного листа
+%--------------------------------------
+\vspace*{-60pt}
+\hspace{-65pt}
+\begin{minipage}{0.3\textwidth}
+\hspace*{-20pt}\centering
+\includegraphics[width=\textwidth]{emblem}
+\end{minipage}
+\begin{minipage}{0.67\textwidth}\small \textbf{
+\vspace*{-0.7ex}
+\hspace*{-6pt}\centerline{Министерство науки и высшего образования Российской Федерации}
+\vspace*{-0.7ex}
+\centerline{Федеральное государственное бюджетное образовательное учреждение }
+\vspace*{-0.7ex}
+\centerline{высшего образования}
+\vspace*{-0.7ex}
+\centerline{<<Московский государственный технический университет}
+\vspace*{-0.7ex}
+\centerline{имени Н.Э. Баумана}
+\vspace*{-0.7ex}
+\centerline{(национальный исследовательский университет)>>}
+\vspace*{-0.7ex}
+\centerline{(МГТУ им. Н.Э. Баумана)}}
+\end{minipage}
+%--------------------------------------
+
+%Полосы
+%--------------------------------------
+\vspace{-25pt}
+\hspace{-35pt}\rule{\textwidth}{2.3pt}
+
+\vspace*{-20.3pt}
+\hspace{-35pt}\rule{\textwidth}{0.4pt}
+%--------------------------------------
+
+\vspace{1.5ex}
+\hspace{-35pt} \noindent \small ФАКУЛЬТЕТ\hspace{80pt} <<Информатика и системы управления>>
+
+\vspace*{-16pt}
+\hspace{47pt}\rule{0.83\textwidth}{0.4pt}
+
+\vspace{0.5ex}
+\hspace{-35pt} \noindent \small КАФЕДРА\hspace{50pt} <<Теоретическая информатика и компьютерные технологии>>
+
+\vspace*{-16pt}
+\hspace{30pt}\rule{0.866\textwidth}{0.4pt}
+  
+\vspace{11em}
+
+\begin{center}
+\Large {\bf Лабораторная работа № 4} \\ 
+\large {\bf по курсу <<Компьютерные сети>>} \\
+\large <<Разработка SSH-сервера>> 
+\end{center}\normalsize
+
+\vspace{8em}
+
+
+\begin{flushright}
+  {Студент группы ИУ9-31Б Горбунов А. Д. \hspace*{15pt}\\ 
+  \vspace{2ex}
+  Преподаватель Посевин Д. П.\hspace*{15pt}}
+\end{flushright}
+
+\bigskip
+
+\vfill
+ 
+
+\begin{center}
+\textsl{Москва 2023}
+\end{center}
+\end{titlepage}
+%--------------------------------------
+%		КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+%--------------------------------------
+
+\renewcommand{\ttdefault}{pcr}
+
+\setlength{\tabcolsep}{3pt}
+\newpage
+\setcounter{page}{2}
+
+\section{Задание}\label{Sect::task}
+SSH-клиент должен поддерживать следующие функции:
+
+    -авторизация клиента на SSH-сервере;
+    -создание директории на удаленном SSH-сервере;
+    -удаление директории на удаленном SSH-сервере;
+    -вывод содержимого директории;
+    -перемещение файлов из одной директории в другую;
+    -удаление файла по имени;
+    -вызов внешних приложений, например ping.
+
+\section{Результаты}\label{Sect::res}
+
+Исходный код программы представлен в листинге~\ref{lst:code1}, ~\ref{lst:code2}, \ref{lst:code3}, ~\ref{lst:code4}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={ssh client.go},label={lst:code1}]
+package main
+
+import (
+    "bufio"
+	"golang.org/x/crypto/ssh"
+	"fmt"
+    "io"
+    "os"
+    "log"
+)
+
+
+func main() {
+    fmt.Print("IP:")
+    ip := ""
+    fmt.Scan(&ip)
+    fmt.Print("login: ")
+    user := ""
+    fmt.Scan(&user)
+    fmt.Print("password: ")
+    password := ""
+    fmt.Scan(&password)
+    fmt.Println(user, password)
+	sshConfig := &ssh.ClientConfig{
+        User: user,
+        HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+        Auth: []ssh.AuthMethod{
+            ssh.Password(password)},
+    }
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={ssh client.go(продолжение)},label={lst:code2}]
+    connection, err := ssh.Dial("tcp",  ip + ":22", sshConfig)
+    if err != nil {
+        log.Println("Failed to dial:", err)
+        return
+    }
+    comand := ""
+    for ; comand != "e_exit"; { 
+    session, err := connection.NewSession()
+    if err != nil {
+        log.Println("Failed to create session:", err)
+	    return 
+    }
+    stdin, err := session.StdinPipe()
+    if err != nil {
+        log.Println("Unable to setup stdin for session:", err)
+	    return
+    }
+    go io.Copy(stdin, os.Stdin)
+
+    stdout, err := session.StdoutPipe()
+    if err != nil {
+        log.Println("Unable to setup stdout for session:", err)
+	    return
+    }
+    go io.Copy(os.Stdout, stdout)
+
+    stderr, err := session.StderrPipe()
+    if err != nil {
+        log.Println("Unable to setup stderr for session:", err)
+	    return
+    }
+    go io.Copy(os.Stderr, stderr)
+
+    reader := bufio.NewReader(os.Stdin)
+    comand, err := reader.ReadString('\n')
+    if err != nil {
+     log.Fatal(err)
+    }
+
+        err = session.Start(comand)
+        if err != nil {
+            log.Println(err)
+            return
+        }
+    }
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={ssh server.go},label={lst:code3}]
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"os"
+	"os/exec"
+	"github.com/gliderlabs/ssh"
+	"time"
+)
+
+func main(){
+	ssh.Handle(func(s ssh.Session) {
+		command := s.Command()
+		if len(command) == 0 {
+			fmt.Fprintln(s, "No command provided.")
+			return
+		}
+
+		switch command[0] {
+		case "mkdir":
+			dirName := command[1]
+			err := os.Mkdir(dirName, 0755)
+			if err != nil {
+				fmt.Fprintln(s, "Failed to create directory:", err)
+				break
+			}
+			fmt.Fprintln(s, "Directory", dirName, "created successfully.")
+		case "rmdir":
+			dirName := command[1]
+			err := os.RemoveAll(dirName)
+			if err != nil {
+				fmt.Fprintln(s, "Failed to remove directory:", err)
+				break
+			}
+			fmt.Fprintln(s, "Directory", dirName, "removed successfully.")
+		case "ls":
+			files, err := ioutil.ReadDir(".")
+			if err != nil {
+				fmt.Fprintln(s, "Failed to list directory:", err)
+				break
+			}
+			for _, file := range files {
+				fmt.Fprintln(s, file.Name())
+			}
+		case "mv":
+			src := command[1]
+			dest := command[2]
+			err := os.Rename(src, dest)
+			if err != nil {
+				fmt.Fprintln(s, "Failed to move file:", err)
+				break
+			}
+			fmt.Fprintln(s, "File", src, "moved to", dest)
+		case "rm":
+			fileName := command[1]
+			err := os.Remove(fileName)
+			if err != nil {
+				fmt.Fprintln(s, "Failed to remove file:", err)
+				break
+			}
+			fmt.Fprintln(s, "File", fileName, "removed successfully.")
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={ssh server.go(продолжение)},label={lst:code4}]
+		case "ping":
+			if len(command) < 2 {
+			  fmt.Println("Site name not provided.\n")
+			  break
+			}
+	
+	
+			cmd := exec.Command("ping", command[1], command[2], command[3]) 
+			stdout, err := cmd.StdoutPipe()
+			if err != nil {
+			  fmt.Sprintf("Failed to create StdoutPipe for ping command: %s\n", err)
+			}
+	
+			if err := cmd.Start(); err != nil {
+			  fmt.Sprintf("Failed to start ping command: %s\n", err)
+			}
+	
+			output, err := ioutil.ReadAll(stdout)
+			if err != nil {
+			  fmt.Sprintf("Failed to read ping output: %s\n", err)
+			}
+	
+			done := make(chan error, 1)
+			go func() { done <- cmd.Wait() }()
+			select {
+			case <-time.After(10 * time.Second):
+			  if err := cmd.Process.Kill(); err != nil {
+				fmt.Sprintf("Failed to kill ping process: %s\n", err)
+			  }
+			  fmt.Println("Ping command timed out.\n")
+			case err := <-done:
+			  if err != nil {
+				fmt.Sprintf("Ping command finished with error: %s\n", err)
+			  }
+			  fmt.Fprintln(s, string(output))
+			}
+	
+		default:
+			fmt.Fprintln(s, "Unknown command.")
+		}
+	})
+
+	fmt.Print("IP: ")
+	ip := ""
+	fmt.Scan(&ip)
+	fmt.Print("Port: ")
+	port := ""
+	fmt.Scan(&port)
+	err := ssh.ListenAndServe(ip + ":" + port , nil)
+	if err != nil {
+		fmt.Println("Failed to start SSH server:", err)
+		return
+	}
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+Результат запуска представлен на рисунке ~\ref{fig:picture_1.png}, ~\ref{fig:picture_2.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_1.png}
+\caption{Пример ping}
+\label{fig:picture_1.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_2.png}
+\caption{Создание директория}
+\label{fig:picture_2.png}
+\end{figure}
+
+\end{document}

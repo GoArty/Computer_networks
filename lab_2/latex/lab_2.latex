@@ -1,0 +1,411 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\UseRawInputEncoding
+
+% Поля
+%--------------------------------------
+\usepackage{geometry}
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1cm}
+%--------------------------------------
+
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, main=russian]{babel}
+%--------------------------------------
+
+\usepackage{textcomp}
+
+% Красная строка
+%--------------------------------------
+\usepackage{indentfirst}               
+%--------------------------------------             
+
+
+%Graphics
+%--------------------------------------
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+%--------------------------------------
+
+% Полуторный интервал
+%--------------------------------------
+\linespread{1.3}                    
+%--------------------------------------
+
+%Выравнивание и переносы
+%--------------------------------------
+% Избавляемся от переполнений
+\sloppy
+% Запрещаем разрыв страницы после первой строки абзаца
+\clubpenalty=10000
+% Запрещаем разрыв страницы после последней строки абзаца
+\widowpenalty=10000
+%--------------------------------------
+
+%Списки
+\usepackage{enumitem}
+
+%Подписи
+\usepackage{caption} 
+
+%Гиперссылки
+\usepackage{hyperref}
+
+\hypersetup {
+	unicode=true
+}
+
+%Рисунки
+%--------------------------------------
+\DeclareCaptionLabelSeparator*{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+%--------------------------------------
+
+\usepackage{tempora}
+
+%Листинги
+%--------------------------------------
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize, 
+  %basicstyle=\footnotesize\AnkaCoder,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks shoulbd only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  inputencoding=utf8,
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bf,       % keyword style
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,                       % sets default tabsize to 8 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%--------------------------------------
+
+%%% Математические пакеты %%%
+%--------------------------------------
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}  % Математические дополнения от AMS
+\usepackage{mathtools}                              % Добавляет окружение multlined
+\usepackage[perpage]{footmisc}
+%--------------------------------------
+
+%--------------------------------------
+%			НАЧАЛО ДОКУМЕНТА
+%--------------------------------------
+
+\begin{document}
+
+%--------------------------------------
+%			ТИТУЛЬНЫЙ ЛИСТ
+%--------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\newpage
+
+
+%Шапка титульного листа
+%--------------------------------------
+\vspace*{-60pt}
+\hspace{-65pt}
+\begin{minipage}{0.3\textwidth}
+\hspace*{-20pt}\centering
+\includegraphics[width=\textwidth]{emblem}
+\end{minipage}
+\begin{minipage}{0.67\textwidth}\small \textbf{
+\vspace*{-0.7ex}
+\hspace*{-6pt}\centerline{Министерство науки и высшего образования Российской Федерации}
+\vspace*{-0.7ex}
+\centerline{Федеральное государственное бюджетное образовательное учреждение }
+\vspace*{-0.7ex}
+\centerline{высшего образования}
+\vspace*{-0.7ex}
+\centerline{<<Московский государственный технический университет}
+\vspace*{-0.7ex}
+\centerline{имени Н.Э. Баумана}
+\vspace*{-0.7ex}
+\centerline{(национальный исследовательский университет)>>}
+\vspace*{-0.7ex}
+\centerline{(МГТУ им. Н.Э. Баумана)}}
+\end{minipage}
+%--------------------------------------
+
+%Полосы
+%--------------------------------------
+\vspace{-25pt}
+\hspace{-35pt}\rule{\textwidth}{2.3pt}
+
+\vspace*{-20.3pt}
+\hspace{-35pt}\rule{\textwidth}{0.4pt}
+%--------------------------------------
+
+\vspace{1.5ex}
+\hspace{-35pt} \noindent \small ФАКУЛЬТЕТ\hspace{80pt} <<Информатика и системы управления>>
+
+\vspace*{-16pt}
+\hspace{47pt}\rule{0.83\textwidth}{0.4pt}
+
+\vspace{0.5ex}
+\hspace{-35pt} \noindent \small КАФЕДРА\hspace{50pt} <<Теоретическая информатика и компьютерные технологии>>
+
+\vspace*{-16pt}
+\hspace{30pt}\rule{0.866\textwidth}{0.4pt}
+  
+\vspace{11em}
+
+\begin{center}
+\Large {\bf Лабораторная работа № 2} \\ 
+\large {\bf по курсу <<Компьютерные сети>>} \\
+\large <<Клиент и сервер HTTP>> 
+\end{center}\normalsize
+
+\vspace{8em}
+
+
+\begin{flushright}
+  {Студент группы ИУ9-31Б Горбунов А. Д. \hspace*{15pt}\\ 
+  \vspace{2ex}
+  Преподаватель Посевин Д. П.\hspace*{15pt}}
+\end{flushright}
+
+\bigskip
+
+\vfill
+ 
+
+\begin{center}
+\textsl{Москва 2023}
+\end{center}
+\end{titlepage}
+%--------------------------------------
+%		КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+%--------------------------------------
+
+\renewcommand{\ttdefault}{pcr}
+
+\setlength{\tabcolsep}{3pt}
+\newpage
+\setcounter{page}{2}
+
+\section{Задание}\label{Sect::task}
+    Формирование списка фильмов с https://www.afisha.ru/msk/cinema/
+
+\section{Результаты}\label{Sect::res}
+
+Исходный код программы представлен в листинге~\ref{lst:code1}, ~\ref{lst:code2}, ~\ref{lst:code3}, ~\ref{lst:code4}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={download.go},label={lst:code1}]
+package main
+import (
+	"github.com/mgutz/logxi/v1"
+	"golang.org/x/net/html"
+	"net/http"
+	"fmt"
+)
+func getAttr(node *html.Node, key string) string {
+	for _, attr := range node.Attr { if attr.Key == key { return attr.Val } }
+	return ""
+}
+func getChildren(node *html.Node) []*html.Node {
+	var children []*html.Node
+	for c := node.FirstChild; c != nil; c = c.NextSibling {
+		children = append(children, c)
+	}
+	return children
+}
+func isElem(node *html.Node, tag string) bool {
+	return node != nil && node.Type == html.ElementNode && node.Data == tag
+}
+func isText(node *html.Node) bool {
+	return node != nil && node.Type == html.TextNode
+}
+func isDiv(node *html.Node, class string) bool {
+	return isElem(node, "div") && getAttr(node, "class") == class
+}
+type Item struct {	Ref, Time, Title string }
+func readItem(item *html.Node) *Item {
+	if a := item.FirstChild; isElem(a, "a") {
+		if cs := getChildren(a); len(cs) == 2 && isElem(cs[0], "time") && isText(cs[1]) {
+			return &Item{
+				Ref:   getAttr(a, "href"),
+				Time:  getAttr(cs[0], "title"),
+				Title: cs[1].Data,
+			}
+		}
+	}
+	return nil
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={download(продолжение 1).go},label={lst:code2}]
+func search(node *html.Node) []*Item {
+	if isDiv(node, "oby5F") {
+		var items []*Item
+		for a := getChildren(node)[0]; a != nil; a = a.NextSibling {
+			if isDiv(a, "wsXlA pZeTF SUiYd") {
+				for b := getChildren(a)[0]; b != nil; b = b.NextSibling{
+					if isDiv(b, "wsXlA pZeTF IS7Va") {
+						for c := getChildren(b)[0]; c != nil; c = c.NextSibling{
+							if isDiv(c, "wsXlA pZeTF CxVPH") {
+								for d := getChildren(c)[0]; d != nil; d = d.NextSibling{
+									if isDiv(d, "naAYr") {
+					for e := getChildren(d)[0]; e != nil; e = e.NextSibling{
+					if getAttr(e, "style") == "height:100%;max-height:48px" {
+					for f := getChildren(e)[0]; f != nil; f = f.NextSibling{
+					if getAttr(f, "class")=="vcSoT b6DKO jkBWH f5gWK" {
+					for g := getChildren(f)[0]; g != nil; g = g.NextSibling{
+															if isDiv(g, "mQ7Bh"){
+					for h := getChildren(g)[0]; h != nil; h = h.NextSibling{
+fmt.Print(h.Data, " ", "https://www.afisha.ru" + getAttr(f,"href"), "\n\n")
+																	if isText(h){
+																		items = append(items, &Item{
+																			Ref:	getAttr(f,"href"),
+																			Title: h.Data,
+																		})
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return items
+	}
+	for c := node.FirstChild; c != nil; c = c.NextSibling {
+		if items := search(c); items != nil {
+			return items
+		}
+	}
+	return nil
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={download(продолжение 2).go},label={lst:code3}]
+func downloadNews() []*Item {
+	log.Info("sending request to www.afisha.ru/msk/cinema")
+	if response, err := http.Get("https://www.afisha.ru/msk/cinema/"); err != nil {
+		log.Error("request to www.afisha.ru/msk/cinema failed", "error", err)
+	} else {
+		defer response.Body.Close()
+		status := response.StatusCode
+		log.Info("got response from www.afisha.ru/msk/cinema", "status", status)
+		if status == http.StatusOK {
+			if doc, err := html.Parse(response.Body); err != nil {
+				log.Error("invalid HTML from www.afisha.ru/msk/cinema", "error", err)
+			} else {
+				log.Info("HTML from www.afisha.ru/msk/cinema parsed successfully")
+				return search(doc)
+			}
+		}
+	}
+	return nil
+}
+\end{lstlisting}
+\end{figure}
+
+
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={server.go},label={lst:code4}]
+package main
+import (
+	"github.com/mgutz/logxi/v1"
+	"html/template"
+	"net/http"
+)
+const INDEX_HTML = `
+    <!doctype html>
+    <html lang="ru">
+        <head>
+            <meta charset="utf-8">
+            <title>List of films from www.afisha.ru/msk/cinema</title>
+            <style>
+            a {
+                color: black;
+                text-decoration: none;
+                background-color: yellow;
+                border: solid;
+                border-radius: 5px;
+                text-alight: center;
+                hight: 50px;
+                weight: 100px;
+                font-family: 'Bradley Hand', cursive;
+                padding: 5px 10px 5px 10px;
+            }    
+            ul{ list-style-type: none; }
+            body{ background-color: grey;}
+            </style>
+        </head>
+        <body>
+            <ul>
+            {{range .}}
+                <li><a href="https://www.afisha.ru{{.Ref}}">{{.Title}}</a></li>
+                <br>
+            {{end}}
+            </ul>
+        </body>
+    </html>
+    `
+var indexHtml = template.Must(template.New("index").Parse(INDEX_HTML))
+func serveClient(response http.ResponseWriter, request *http.Request) {
+	path := request.URL.Path
+	log.Info("got request", "Method", request.Method, "Path", path)
+	if path != "/" && path != "/index.html" {
+		log.Error("invalid path", "Path", path)
+		response.WriteHeader(http.StatusNotFound)
+	} else if err := indexHtml.Execute(response, downloadNews()); err != nil {
+		log.Error("HTML creation failed", "error", err)
+	} else {
+		log.Info("response sent to client successfully")
+	}
+}
+func main() {
+	http.HandleFunc("/", serveClient)
+	log.Info("starting listener")
+	log.Error("listener failed", "error", http.ListenAndServe("127.0.0.1:6060", nil))
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+Результат запуска представлен на рисунке ~\ref{fig:picture_1.png}, ~\ref{fig:picture_2.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_1.png}
+\caption{Вывод списка фильмов(вид страницы)}
+\label{fig:picture_1.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_2.png}
+\caption{Вывод списка фильмов(html-код)}
+\label{fig:picture_2.png}
+\end{figure}
+
+\end{document}

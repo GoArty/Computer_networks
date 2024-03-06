@@ -1,0 +1,326 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\UseRawInputEncoding
+
+% Поля
+%--------------------------------------
+\usepackage{geometry}
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1cm}
+%--------------------------------------
+
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, main=russian]{babel}
+%--------------------------------------
+
+\usepackage{textcomp}
+
+% Красная строка
+%--------------------------------------
+\usepackage{indentfirst}               
+%--------------------------------------             
+
+
+%Graphics
+%--------------------------------------
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+%--------------------------------------
+
+% Полуторный интервал
+%--------------------------------------
+\linespread{1.3}                    
+%--------------------------------------
+
+%Выравнивание и переносы
+%--------------------------------------
+% Избавляемся от переполнений
+\sloppy
+% Запрещаем разрыв страницы после первой строки абзаца
+\clubpenalty=10000
+% Запрещаем разрыв страницы после последней строки абзаца
+\widowpenalty=10000
+%--------------------------------------
+
+%Списки
+\usepackage{enumitem}
+
+%Подписи
+\usepackage{caption} 
+
+%Гиперссылки
+\usepackage{hyperref}
+
+\hypersetup {
+	unicode=true
+}
+
+%Рисунки
+%--------------------------------------
+\DeclareCaptionLabelSeparator*{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+%--------------------------------------
+
+\usepackage{tempora}
+
+%Листинги
+%--------------------------------------
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize, 
+  %basicstyle=\footnotesize\AnkaCoder,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks shoulbd only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  inputencoding=utf8,
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bf,       % keyword style
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,                       % sets default tabsize to 8 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%--------------------------------------
+
+%%% Математические пакеты %%%
+%--------------------------------------
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}  % Математические дополнения от AMS
+\usepackage{mathtools}                              % Добавляет окружение multlined
+\usepackage[perpage]{footmisc}
+%--------------------------------------
+
+%--------------------------------------
+%			НАЧАЛО ДОКУМЕНТА
+%--------------------------------------
+
+\begin{document}
+
+%--------------------------------------
+%			ТИТУЛЬНЫЙ ЛИСТ
+%--------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\newpage
+
+
+%Шапка титульного листа
+%--------------------------------------
+\vspace*{-60pt}
+\hspace{-65pt}
+\begin{minipage}{0.3\textwidth}
+\hspace*{-20pt}\centering
+\includegraphics[width=\textwidth]{emblem}
+\end{minipage}
+\begin{minipage}{0.67\textwidth}\small \textbf{
+\vspace*{-0.7ex}
+\hspace*{-6pt}\centerline{Министерство науки и высшего образования Российской Федерации}
+\vspace*{-0.7ex}
+\centerline{Федеральное государственное бюджетное образовательное учреждение }
+\vspace*{-0.7ex}
+\centerline{высшего образования}
+\vspace*{-0.7ex}
+\centerline{<<Московский государственный технический университет}
+\vspace*{-0.7ex}
+\centerline{имени Н.Э. Баумана}
+\vspace*{-0.7ex}
+\centerline{(национальный исследовательский университет)>>}
+\vspace*{-0.7ex}
+\centerline{(МГТУ им. Н.Э. Баумана)}}
+\end{minipage}
+%--------------------------------------
+
+%Полосы
+%--------------------------------------
+\vspace{-25pt}
+\hspace{-35pt}\rule{\textwidth}{2.3pt}
+
+\vspace*{-20.3pt}
+\hspace{-35pt}\rule{\textwidth}{0.4pt}
+%--------------------------------------
+
+\vspace{1.5ex}
+\hspace{-35pt} \noindent \small ФАКУЛЬТЕТ\hspace{80pt} <<Информатика и системы управления>>
+
+\vspace*{-16pt}
+\hspace{47pt}\rule{0.83\textwidth}{0.4pt}
+
+\vspace{0.5ex}
+\hspace{-35pt} \noindent \small КАФЕДРА\hspace{50pt} <<Теоретическая информатика и компьютерные технологии>>
+
+\vspace*{-16pt}
+\hspace{30pt}\rule{0.866\textwidth}{0.4pt}
+  
+\vspace{11em}
+
+\begin{center}
+\Large {\bf Лабораторная работа № 6_1} \\ 
+\large {\bf по курсу <<Компьютерные сети>>} \\
+\large <<Импорт новостей в базу данных из RSS-канала>> 
+\end{center}\normalsize
+
+\vspace{8em}
+
+
+\begin{flushright}
+  {Студент группы ИУ9-31Б Горбунов А. Д. \hspace*{15pt}\\ 
+  \vspace{2ex}
+  Преподаватель Посевин Д. П.\hspace*{15pt}}
+\end{flushright}
+
+\bigskip
+
+\vfill
+ 
+
+\begin{center}
+\textsl{Москва 2023}
+\end{center}
+\end{titlepage}
+%--------------------------------------
+%		КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+%--------------------------------------
+
+\renewcommand{\ttdefault}{pcr}
+
+\setlength{\tabcolsep}{3pt}
+\newpage
+\setcounter{page}{2}
+
+\section{Задание}\label{Sect::task}
+    Разработать приложение выполняющее разбор RSS-ленты новостей с сайта https://vesti-k.ru/rss/ и запись новостей в таблицу базы данных MySQL.
+\section{Результаты}\label{Sect::res}
+
+Исходный код программы представлен в листинге~\ref{lst:code1}, ~\ref{lst:code2}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={rss-app.go},label={lst:code1}]
+package main
+
+import (
+  	"bytes"
+  	"database/sql"
+  	"encoding/xml"
+  	"fmt"
+  	"golang.org/x/net/html/charset"
+  	"io/ioutil"
+  	"log"
+  	"net/http"
+  _ "github.com/go-sql-driver/mysql"
+)
+
+type Item struct {
+	Guid		string `xml:"guid"`
+  	Title       string `xml:"title"`
+  	Link        string `xml:"link"`
+  	Description string `xml:"description"`
+  	PubDate     string `xml:"pub_date"`
+	Enclosure   struct {
+		URL  	string `xml:"url,attr"`
+		Type 	string `xml:"type,attr"`
+	}				   `xml:"enclosure"`
+	Category	string `xml:"category"`
+}
+
+type RSS struct {
+	XMLName xml.Name `xml:"rss"`
+  	Items   []Item   `xml:"channel>item"`
+}
+
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={rss-app.go(продолжение)},label={lst:code2}]
+func main() {
+	db, err := sql.Open("mysql", "iu9networkslabs:Je2dTYr6@tcp(students.yss.su:3306)/iu9networkslabs")
+  	if err != nil { 	log.Fatal(err)  	}
+  	defer db.Close()
+  	err = db.Ping()
+  	if err != nil {		log.Fatal(err)  	}
+  	_, err = db.Exec(`
+    CREATE TABLE IF NOT EXISTS lab6Gorbunov (
+      	id INT AUTO_INCREMENT PRIMARY KEY,
+      	title TEXT,
+      	link TEXT,
+      	description TEXT,
+      	pub_date DATE,
+		enclosure_url TEXT,
+		enclosure_type TEXT,
+		category TEXT
+    	)
+  	`)
+  	if err != nil {    	log.Fatal(err)    	}
+  	_, err = db.Exec(`
+    	ALTER TABLE lab6Gorbunov CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  	`)
+  	if err != nil {    	log.Fatal(err)  	}
+  	resp, err := http.Get("https://vesti-k.ru/rss/")
+  	if err != nil {    	log.Fatal(err)  	}
+  	defer resp.Body.Close()
+
+  	body, err := ioutil.ReadAll(resp.Body)
+  	if err != nil {    	log.Fatal(err)  	}
+  	decoder := xml.NewDecoder(bytes.NewReader(body))
+  	decoder.CharsetReader = charset.NewReaderLabel
+  	var rss RSS
+  	err = decoder.Decode(&rss)
+  	if err != nil {    	log.Fatal(err)  	}
+  	for _, item := range rss.Items {
+    	var count int
+    	err := db.QueryRow("SELECT COUNT(*) FROM lab6Gorbunov WHERE title = ?", item.Title).Scan(&count)
+    	if err != nil {	log.Fatal(err)    	}
+    	if count == 0 {
+      		_, err := db.Exec("INSERT INTO lab6Gorbunov (title, link, description, pub_date, enclosure_url, enclosure_type, category) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        		item.Title, item.Link, item.Description, item.PubDate, item.Enclosure.URL, item.Enclosure.Type, item.Category)
+      		if err != nil {	log.Fatal(err)	}
+      		fmt.Printf("New news added: %s\n", item.Title)
+    	}
+    }
+}
+
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+Результат запуска представлен на рисунке ~\ref{fig:picture_1.png}, ~\ref{fig:picture_2.png}, ~\ref{fig:picture_3.png}, ~\ref{fig:picture_4.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_1.png}
+\caption{Таблица до использования программы}
+\label{fig:picture_1.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_2.png}
+\caption{Таблица после использования программы}
+\label{fig:picture_2.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_3.png}
+\caption{Таблица после удфления первого элемента}
+\label{fig:picture_3.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_4.png}
+\caption{Таблица после повторного использования программы}
+\label{fig:picture_4.png}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,434 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\UseRawInputEncoding
+
+% Поля
+%--------------------------------------
+\usepackage{geometry}
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1cm}
+%--------------------------------------
+
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, main=russian]{babel}
+%--------------------------------------
+
+\usepackage{textcomp}
+
+% Красная строка
+%--------------------------------------
+\usepackage{indentfirst}               
+%--------------------------------------             
+
+
+%Graphics
+%--------------------------------------
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+%--------------------------------------
+
+% Полуторный интервал
+%--------------------------------------
+\linespread{1.3}                    
+%--------------------------------------
+
+%Выравнивание и переносы
+%--------------------------------------
+% Избавляемся от переполнений
+\sloppy
+% Запрещаем разрыв страницы после первой строки абзаца
+\clubpenalty=10000
+% Запрещаем разрыв страницы после последней строки абзаца
+\widowpenalty=10000
+%--------------------------------------
+
+%Списки
+\usepackage{enumitem}
+
+%Подписи
+\usepackage{caption} 
+
+%Гиперссылки
+\usepackage{hyperref}
+
+\hypersetup {
+	unicode=true
+}
+
+%Рисунки
+%--------------------------------------
+\DeclareCaptionLabelSeparator*{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+%--------------------------------------
+
+\usepackage{tempora}
+
+%Листинги
+%--------------------------------------
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize, 
+  %basicstyle=\footnotesize\AnkaCoder,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks shoulbd only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  inputencoding=utf8,
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bf,       % keyword style
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,                       % sets default tabsize to 8 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%--------------------------------------
+
+%%% Математические пакеты %%%
+%--------------------------------------
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}  % Математические дополнения от AMS
+\usepackage{mathtools}                              % Добавляет окружение multlined
+\usepackage[perpage]{footmisc}
+%--------------------------------------
+
+%--------------------------------------
+%			НАЧАЛО ДОКУМЕНТА
+%--------------------------------------
+
+\begin{document}
+
+%--------------------------------------
+%			ТИТУЛЬНЫЙ ЛИСТ
+%--------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\newpage
+
+
+%Шапка титульного листа
+%--------------------------------------
+\vspace*{-60pt}
+\hspace{-65pt}
+\begin{minipage}{0.3\textwidth}
+\hspace*{-20pt}\centering
+\includegraphics[width=\textwidth]{emblem}
+\end{minipage}
+\begin{minipage}{0.67\textwidth}\small \textbf{
+\vspace*{-0.7ex}
+\hspace*{-6pt}\centerline{Министерство науки и высшего образования Российской Федерации}
+\vspace*{-0.7ex}
+\centerline{Федеральное государственное бюджетное образовательное учреждение }
+\vspace*{-0.7ex}
+\centerline{высшего образования}
+\vspace*{-0.7ex}
+\centerline{<<Московский государственный технический университет}
+\vspace*{-0.7ex}
+\centerline{имени Н.Э. Баумана}
+\vspace*{-0.7ex}
+\centerline{(национальный исследовательский университет)>>}
+\vspace*{-0.7ex}
+\centerline{(МГТУ им. Н.Э. Баумана)}}
+\end{minipage}
+%--------------------------------------
+
+%Полосы
+%--------------------------------------
+\vspace{-25pt}
+\hspace{-35pt}\rule{\textwidth}{2.3pt}
+
+\vspace*{-20.3pt}
+\hspace{-35pt}\rule{\textwidth}{0.4pt}
+%--------------------------------------
+
+\vspace{1.5ex}
+\hspace{-35pt} \noindent \small ФАКУЛЬТЕТ\hspace{80pt} <<Информатика и системы управления>>
+
+\vspace*{-16pt}
+\hspace{47pt}\rule{0.83\textwidth}{0.4pt}
+
+\vspace{0.5ex}
+\hspace{-35pt} \noindent \small КАФЕДРА\hspace{50pt} <<Теоретическая информатика и компьютерные технологии>>
+
+\vspace*{-16pt}
+\hspace{30pt}\rule{0.866\textwidth}{0.4pt}
+  
+\vspace{11em}
+
+\begin{center}
+\Large {\bf Лабораторная работа № 3} \\ 
+\large {\bf по курсу <<Компьютерные сети>>} \\
+\large <<Протокол одноранговой сети>> 
+\end{center}\normalsize
+
+\vspace{8em}
+
+
+\begin{flushright}
+  {Студент группы ИУ9-31Б Горбунов А. Д. \hspace*{15pt}\\ 
+  \vspace{2ex}
+  Преподаватель Посевин Д. П.\hspace*{15pt}}
+\end{flushright}
+
+\bigskip
+
+\vfill
+ 
+
+\begin{center}
+\textsl{Москва 2023}
+\end{center}
+\end{titlepage}
+%--------------------------------------
+%		КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+%--------------------------------------
+
+\renewcommand{\ttdefault}{pcr}
+
+\setlength{\tabcolsep}{3pt}
+\newpage
+\setcounter{page}{2}
+
+\section{Задание}\label{Sect::task}
+    Адресная книга (полносвязная)
+    
+    Топология: полносвязная.
+    
+    Информация, известная пиру при запуске: его IP-адрес и порт, а также IP-адреса и порты возможных соседей. Описание службы: каждый пир через стандартный поток ввода принимает команды – добавление записи адресной книги (вида «фамилия–e-mail»), удаление записи и вывод списка записей; пиры должны обмениваться записями, чтобы у всех была одинаковая адресная книга.
+
+\section{Результаты}\label{Sect::res}
+
+Исходный код программы представлен в листинге~\ref{lst:code1}, ~\ref{lst:code2}, ~\ref{lst:code3}, ~\ref{lst:code4}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={client.go},label={lst:code1}]
+package main
+import ( 
+    "encoding/json"
+    "fmt"
+    "log"
+    "net"
+    "os"
+    "os/signal"
+    "time"
+)
+type AddressBook struct {
+ Records []Record `json:"records"`
+}
+type Record struct {
+ Name  string `json:"name"`
+ Email string `json:"email"`
+}
+type SupType struct{
+    supType ForJSON `json:"suptype"`
+}
+type ForJSON struct{
+    forJSON Record `json:"forjson"`
+    oper string `json:"oper"`
+    index int `json:"index"`
+    len int `json:"len"`
+ }
+type Peer struct {
+ IP   string
+ Port int
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={client.go(продолжение 1)},label={lst:code2}]
+func main() {
+	ip := getIPAddress()
+	port := getPort()
+	neighbors := getNeighbors()
+	addressBook := AddressBook{}
+	go startServer(ip, port, neighbors, &addressBook)
+	go startCommandServer(&addressBook, port)
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt)
+	<-c
+	log.Println("Exiting...")
+}
+func getIPAddress() string {
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+	localAddr := conn.LocalAddr().(*net.UDPAddr)
+
+	return localAddr.IP.String()
+}
+func getPort() int {
+	port := 2222
+	fmt.Print("Port: ")
+	fmt.Scan(&port)
+	address := fmt.Sprintf("localhost:%d", port)
+	l, err := net.Listen("tcp", address)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer l.Close()
+	localAddr := l.Addr().(*net.TCPAddr)
+	return localAddr.Port
+}
+func getNeighbors() []Peer {
+	neighbors := []Peer{{getIPAddress(), 1111}, {getIPAddress(), 2222}, {getIPAddress(), 3333}}
+	return neighbors
+}
+func startServer(ip string, port int, neighbors []Peer, addressBook *AddressBook) {
+	address := fmt.Sprintf("%s:%d", ip, port)
+	listener, err := net.Listen("tcp", address)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer listener.Close()
+	log.Printf("Server started and listening on %s\n", address)
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			log.Fatal(err)
+		}
+		go handleConnection(conn, addressBook)
+	}
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={client.go(продолжение 2)},label={lst:code3}]
+func handleConnection(conn net.Conn, addressBook *AddressBook) {
+	defer conn.Close()
+	log.Println("New connection established")
+	message := make([]byte, 4096)
+	n, err := conn.Read(message)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	var record AddressBook
+	err = json.Unmarshal(message[:n], &record)
+
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	addressBook.Records = record.Records
+}
+
+func sendAddressBookToNeighbors(addressBook *AddressBook, port int) {
+	jsonData, err := json.Marshal(addressBook)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	for _, neighbor := range getNeighbors() {
+		if neighbor != ([]Peer{{getIPAddress(), port}})[0] {
+			go sendAddressBook(neighbor, jsonData)
+		}
+	}
+}
+
+func sendAddressBook(neighbor Peer, jsonData []byte) {
+	address := fmt.Sprintf("%s:%d", neighbor.IP, neighbor.Port)
+	conn, err := net.DialTimeout("tcp", address, time.Second*5)
+	if err != nil {
+		log.Printf("Failed to connect to neighbor %s: %v\n", address, err)
+		return
+	}
+	defer conn.Close()
+
+	_, err = conn.Write(jsonData)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	log.Printf("Sent address book to neighbor %s\n", address)
+}
+\end{lstlisting}
+\end{figure}
+
+
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={client.go},label={lst:code4}]
+func startCommandServer(addressBook *AddressBook, port int) {
+	for {
+		var command string
+		fmt.Print("Enter command (add, remove, list): ")
+		fmt.Scanln(&command)
+
+		switch command {
+		case "add":
+			addRecord(addressBook, port)
+		case "remove":
+			removeRecord(addressBook, port)
+		case "list":
+			listRecords(addressBook)
+		default:
+			log.Println("Invalid command")
+		}
+	}
+}
+func addRecord(addressBook *AddressBook, port int) {
+	var name, email string
+	fmt.Print("Enter name: ")
+	fmt.Scanln(&name)
+	fmt.Print("Enter email: ")
+	fmt.Scanln(&email)
+
+	record := Record{Name: name, Email: email}
+	addressBook.Records = append(addressBook.Records, record)
+
+	sendAddressBookToNeighbors(addressBook, port)
+}
+
+func removeRecord(addressBook *AddressBook, port int) {
+	var index int
+	fmt.Print("Enter the index of the record to remove: ")
+	fmt.Scanln(&index)
+
+	if index >= 0 && index < len(addressBook.Records) {
+		addressBook.Records = append(addressBook.Records[:index], addressBook.Records[index+1:]...)
+
+		sendAddressBookToNeighbors(addressBook, port)
+	} else {
+		log.Println("Invalid index")
+	}
+}
+
+func listRecords(addressBook *AddressBook) {
+	for i, record := range addressBook.Records {
+		fmt.Printf("%d. %s - %s\n", i, record.Name, record.Email)
+	}
+}
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+Результат запуска представлен на рисунке ~\ref{fig:picture_1.png}, ~\ref{fig:picture_2.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_1.png}
+\caption{Пример ввода контактов}
+\label{fig:picture_1.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_2.png}
+\caption{Пример удаления контактов}
+\label{fig:picture_2.png}
+\end{figure}
+
+\end{document}

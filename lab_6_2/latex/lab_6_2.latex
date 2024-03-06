@@ -1,0 +1,364 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\UseRawInputEncoding
+
+% Поля
+%--------------------------------------
+\usepackage{geometry}
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1cm}
+%--------------------------------------
+
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, main=russian]{babel}
+%--------------------------------------
+
+\usepackage{textcomp}
+
+% Красная строка
+%--------------------------------------
+\usepackage{indentfirst}               
+%--------------------------------------             
+
+
+%Graphics
+%--------------------------------------
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+%--------------------------------------
+
+% Полуторный интервал
+%--------------------------------------
+\linespread{1.3}                    
+%--------------------------------------
+
+%Выравнивание и переносы
+%--------------------------------------
+% Избавляемся от переполнений
+\sloppy
+% Запрещаем разрыв страницы после первой строки абзаца
+\clubpenalty=10000
+% Запрещаем разрыв страницы после последней строки абзаца
+\widowpenalty=10000
+%--------------------------------------
+
+%Списки
+\usepackage{enumitem}
+
+%Подписи
+\usepackage{caption} 
+
+%Гиперссылки
+\usepackage{hyperref}
+
+\hypersetup {
+	unicode=true
+}
+
+%Рисунки
+%--------------------------------------
+\DeclareCaptionLabelSeparator*{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+%--------------------------------------
+
+\usepackage{tempora}
+
+%Листинги
+%--------------------------------------
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize, 
+  %basicstyle=\footnotesize\AnkaCoder,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks shoulbd only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  inputencoding=utf8,
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\bf,       % keyword style
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  xleftmargin=25pt,
+  xrightmargin=25pt,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  tabsize=2,                       % sets default tabsize to 8 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%--------------------------------------
+
+%%% Математические пакеты %%%
+%--------------------------------------
+\usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}  % Математические дополнения от AMS
+\usepackage{mathtools}                              % Добавляет окружение multlined
+\usepackage[perpage]{footmisc}
+%--------------------------------------
+
+%--------------------------------------
+%			НАЧАЛО ДОКУМЕНТА
+%--------------------------------------
+
+\begin{document}
+
+%--------------------------------------
+%			ТИТУЛЬНЫЙ ЛИСТ
+%--------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\newpage
+
+
+%Шапка титульного листа
+%--------------------------------------
+\vspace*{-60pt}
+\hspace{-65pt}
+\begin{minipage}{0.3\textwidth}
+\hspace*{-20pt}\centering
+\includegraphics[width=\textwidth]{emblem}
+\end{minipage}
+\begin{minipage}{0.67\textwidth}\small \textbf{
+\vspace*{-0.7ex}
+\hspace*{-6pt}\centerline{Министерство науки и высшего образования Российской Федерации}
+\vspace*{-0.7ex}
+\centerline{Федеральное государственное бюджетное образовательное учреждение }
+\vspace*{-0.7ex}
+\centerline{высшего образования}
+\vspace*{-0.7ex}
+\centerline{<<Московский государственный технический университет}
+\vspace*{-0.7ex}
+\centerline{имени Н.Э. Баумана}
+\vspace*{-0.7ex}
+\centerline{(национальный исследовательский университет)>>}
+\vspace*{-0.7ex}
+\centerline{(МГТУ им. Н.Э. Баумана)}}
+\end{minipage}
+%--------------------------------------
+
+%Полосы
+%--------------------------------------
+\vspace{-25pt}
+\hspace{-35pt}\rule{\textwidth}{2.3pt}
+
+\vspace*{-20.3pt}
+\hspace{-35pt}\rule{\textwidth}{0.4pt}
+%--------------------------------------
+
+\vspace{1.5ex}
+\hspace{-35pt} \noindent \small ФАКУЛЬТЕТ\hspace{80pt} <<Информатика и системы управления>>
+
+\vspace*{-16pt}
+\hspace{47pt}\rule{0.83\textwidth}{0.4pt}
+
+\vspace{0.5ex}
+\hspace{-35pt} \noindent \small КАФЕДРА\hspace{50pt} <<Теоретическая информатика и компьютерные технологии>>
+
+\vspace*{-16pt}
+\hspace{30pt}\rule{0.866\textwidth}{0.4pt}
+  
+\vspace{11em}
+
+\begin{center}
+\Large {\bf Лабораторная работа № 6_2} \\ 
+\large {\bf по курсу <<Компьютерные сети>>} \\
+\large <<Разработка SMTP-клиента и приложения почтовой рассылки>> 
+\end{center}\normalsize
+
+\vspace{8em}
+
+
+\begin{flushright}
+  {Студент группы ИУ9-31Б Горбунов А. Д. \hspace*{15pt}\\ 
+  \vspace{2ex}
+  Преподаватель Посевин Д. П.\hspace*{15pt}}
+\end{flushright}
+
+\bigskip
+
+\vfill
+ 
+
+\begin{center}
+\textsl{Москва 2023}
+\end{center}
+\end{titlepage}
+%--------------------------------------
+%		КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+%--------------------------------------
+
+\renewcommand{\ttdefault}{pcr}
+
+\setlength{\tabcolsep}{3pt}
+\newpage
+\setcounter{page}{2}
+
+\section{Задание}\label{Sect::task}
+    Задача 1: SMTP-клиент на Golang. Необходимо реализовать программу отправки проверочного SMTP сообщения, которое необходимо производить на ящик danila@bmstu.posevin.ru с одного из ящикок, доступ к которым приведен ниже. При этом  работоспособность приложения необходимо продемонстрировать очно. В этом приложении должны быть реализованы следующие функции:
+    
+    ◦ ввод значения поля To из командной строки;
+    
+    ◦ ввод значения поля Subject из командной строки;
+    
+    ◦ ввод сообщения в поле Message body из командной строки.
+    
+    Задача 2: Приложение почтовых рассылок.
+    
+    1. В базе данных MySQL создать таблицу рассылки, в которой должны быть следующие поля: имя пользователя, адрес электронной посты пользователя, сообщение пользователю.
+    
+    2. Реализовать рассылку по таблице рассылки, при этом в тексте письма должно быть реализовано персональное обращение к пользователю, текст письма оформлен в HTML формате, при этом как минимум приветствие должно быть выделено жирным шрифтом, текст письма курсивом и фон письма отличаться от белого, рекомендуется прочитать статьи приведенные ниже о верстке электронных писем для рассылок.
+    
+    3. Необходимо реализовать два варианта рассылок: массовый спам, путем использования горутин и последовательную рассылку со случайным значением интервала задержки писем между отправками. При тестировании использовать второй способ, чтобы почтовый ящик не был забанен почтовым сервером.
+
+    
+\section{Результаты}\label{Sect::res}
+
+Исходный код программы представлен в листинге~\ref{lst:code1}, ~\ref{lst:code2}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={SMTP-client.go},label={lst:code1}]
+package main
+import (
+    "crypto/tls"
+    "database/sql"
+    "fmt"
+    "log"
+    "math/rand"
+    "net/smtp"
+    "time"
+
+
+  _ "github.com/go-sql-driver/mysql"
+)
+type EmailConfiguration struct {
+    Username string
+    Password string
+    Host     string
+    Port     string
+}
+type EmailData struct {
+    To      string
+    Subject string
+    Body    string
+}
+var emailConfig = EmailConfiguration{
+    Username: "dts21@dactyl.su",
+    Password: "12345678990DactylSUDTS",
+    Host:     "mail.nic.ru",
+    Port:     "465",
+}
+func main() {
+    createTableQuery := `
+    CREATE TABLE IF NOT EXISTS lab7Gorbunov (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL,
+        message TEXT NOT NULL
+    );`
+    db, err := sql.Open("mysql", "iu9networkslabs:Je2dTYr6@tcp(students.yss.su)/iu9networkslabs")
+    if err != nil {   log.Fatal(err)    }
+    defer db.Close()
+    _, err = db.Exec(createTableQuery)
+    if err != nil {   log.Fatal(err)    }
+    for i := 0; i < 10; i++{
+    rows, err := db.Query("SELECT username, email, message FROM lab7Gorbunov")
+    if err != nil {   log.Fatal(err)    }
+    defer rows.Close()
+    for rows.Next() {
+        var username, email, message string
+        err := rows.Scan(&username, &email, &message)
+        if err != nil {  log.Fatal(err) }
+        emailData := generateEmailData(username, email, message)
+        sendEmail(emailData)
+        time.Sleep(time.Duration(randomDelay()) * time.Second)
+    }
+  }
+}
+
+
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{lstlisting}[language={go},caption={SMTP-client.go(продолжение)},label={lst:code2}]
+func sendEmail(emailData EmailData) {
+    tlsConfig := &tls.Config{
+        InsecureSkipVerify: true,
+        ServerName:         emailConfig.Host,
+    }
+
+    conn, err := tls.Dial("tcp", emailConfig.Host+":"+emailConfig.Port, tlsConfig)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer conn.Close()
+
+    auth := smtp.PlainAuth("", emailConfig.Username, emailConfig.Password, emailConfig.Host)
+
+    client, err := smtp.NewClient(conn, emailConfig.Host)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer client.Close()
+
+    if err = client.Auth(auth); err != nil {
+        log.Fatal(err)
+    }
+
+    if err = client.Mail(emailConfig.Username); err != nil {
+        log.Fatal(err)
+    }
+
+    if err = client.Rcpt(emailData.To); err != nil {
+        log.Fatal(err)
+    }
+
+    dataWriter, err := client.Data()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    _, err = dataWriter.Write([]byte(
+        "To: " + emailData.To + "\r\n" +
+        "Subject: " + emailData.Subject + "\r\n" +
+        "Content-Type: text/html; charset=UTF-8\r\n\r\n" +
+        emailData.Body))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    err = dataWriter.Close()
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+
+func randomDelay() int {
+    return rand.Intn(10) + 1
+}
+
+\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+Результат запуска представлен на рисунке ~\ref{fig:picture_1.png}, ~\ref{fig:picture_2.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_1.png}
+\caption{Сообщения на почте}
+\label{fig:picture_1.png}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{picture_2.png}
+\caption{Таблица email-ов для рассылки}
+\label{fig:picture_2.png}
+\end{figure}
+
+\end{document}
